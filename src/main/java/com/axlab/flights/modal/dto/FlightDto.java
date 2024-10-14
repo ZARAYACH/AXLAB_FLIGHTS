@@ -4,11 +4,13 @@ import java.time.LocalDateTime;
 
 public record FlightDto(
         Long id,
-        String IATACarrierCode,
+        String iataCarrierCode,
         String number,
         LocalDateTime date,
-        String IATAOriginCode,
-        String IATADestinationCode
+        String iataOriginCode,
+        String iataDestinationCode,
+        LocalDateTime createdAt,
+        LocalDateTime updatedAt
 
 ) {
 }

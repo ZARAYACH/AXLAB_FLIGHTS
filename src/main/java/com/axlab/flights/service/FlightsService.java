@@ -28,19 +28,19 @@ public class FlightsService {
 
     public Flight create(FlightDto flightDto) throws BadRequestException {
         validateFlightDto(flightDto);
-        return flightsRepository.save(new Flight(flightDto.IATACarrierCode(),
+        return flightsRepository.save(new Flight(flightDto.iataCarrierCode(),
                 flightDto.number(),
                 flightDto.date(),
-                flightDto.IATAOriginCode(),
-                flightDto.IATADestinationCode()));
+                flightDto.iataOriginCode(),
+                flightDto.iataDestinationCode()));
     }
 
     private void validateFlightDto(FlightDto flightDto) throws BadRequestException {
         try {
-            Assert.hasText(flightDto.IATACarrierCode(), "IATA Carrier Code can't be empty");
+            Assert.hasText(flightDto.iataCarrierCode(), "IATA Carrier Code can't be empty");
             Assert.hasText(flightDto.number(), "Flight number can't be empty");
-            Assert.hasText(flightDto.IATAOriginCode(), "IATA origin code can't be empty");
-            Assert.hasText(flightDto.IATADestinationCode(), "IATA destination Code can't be empty");
+            Assert.hasText(flightDto.iataOriginCode(), "IATA origin code can't be empty");
+            Assert.hasText(flightDto.iataDestinationCode(), "IATA destination Code can't be empty");
             Assert.notNull(flightDto.date(), "Flight date can't be null");
         } catch (Exception e){
             throw new BadRequestException(e);
@@ -56,9 +56,9 @@ public class FlightsService {
 
         flight.setDate(newFlight.date());
         flight.setNumber(newFlight.number());
-        flight.setIATACarrierCode(newFlight.IATACarrierCode());
-        flight.setIATAOriginCode(newFlight.IATAOriginCode());
-        flight.setIATADestinationCode(newFlight.IATADestinationCode());
+        flight.setIataCarrierCode(newFlight.iataCarrierCode());
+        flight.setIataOriginCode(newFlight.iataOriginCode());
+        flight.setIataDestinationCode(newFlight.iataDestinationCode());
 
         return flightsRepository.save(flight);
     }
